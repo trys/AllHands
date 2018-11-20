@@ -6,7 +6,7 @@
     <Thanks />
     <WeeklyReports />
     <Timer :active="slide === 3" />
-    <Dom />
+    <Dom :active="slide === 4" />
     <Fin />
   </div>
 </template>
@@ -94,6 +94,11 @@ html {
   box-sizing: inherit;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .slides {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -105,7 +110,7 @@ html {
   white-space: nowrap;
   width: 1200vw;
   transition: 1.5s transform cubic-bezier(0.740, 0.070, 0.160, 0.965);
-  background: linear-gradient(to right, #212020 0%, #212020 8.333%, #88D3CE 16.666%, #4B1CCF 25%, #09203F 33.333%, #537895 41.666%, #2CD8D5 50%, #537895 58.333%, #212020 66.666%, #212020 75%, #DF89B5 83.333%, #BFD9FE 100%);
+  background: linear-gradient(to right, #212020 0%, #212020 8.333%, #88D3CE 16.666%, #4B1CCF 25%, #09203F 33.333%, #537895 41.666%, #2CD8D5 50%, #537895 58.333%, #F68084 66.666%, #FCCB90 75%, #DF89B5 83.333%, #BFD9FE 100%);
 
   & > * {
     width: 100vw;
