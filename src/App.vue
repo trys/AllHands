@@ -3,7 +3,7 @@
     transform: `translateX(-${slide * 200}vw)`
   }" :data-active="slide">
     <Home :active="slide === 0" />
-    <Thanks />
+    <Thanks :active="slide === 1" />
     <WeeklyReports />
     <Timer :active="slide === 3" />
     <Dom :active="slide === 4" />
@@ -24,7 +24,7 @@ export default {
 
   data () {
     return {
-      slide: 0
+      slide: 1
     }
   },
 
