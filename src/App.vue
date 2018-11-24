@@ -1,13 +1,17 @@
 <template>
-  <div class="slides" :style="{
-    transform: `translateX(-${slide * 200}vw)`
-  }" :data-active="slide">
-    <Home :active="slide === 0" />
-    <Thanks :active="slide === 1" />
-    <WeeklyReports />
-    <Timer :active="slide === 3" />
-    <Dom :active="slide === 4" />
-    <Fin />
+  <div>
+    <div class="slides" :style="{
+      transform: `translateX(-${slide * 200}vw)`
+    }" :data-active="slide">
+      <Home :active="slide === 0" />
+      <Thanks :active="slide === 1" />
+      <WeeklyReports />
+      <Timer :active="slide === 3" />
+      <Dom :active="slide === 4" />
+      <Fin />
+    </div>
+    <button type="button" class="traverse" aria-label="Previous slide" @click="prevSlide" />
+    <button type="button" class="traverse" aria-label="Next slide" @click="nextSlide" />
   </div>
 </template>
 
@@ -24,7 +28,7 @@ export default {
 
   data () {
     return {
-      slide: 1
+      slide: 0
     }
   },
 
@@ -88,6 +92,7 @@ body {
 
 html {
   box-sizing: border-box;
+  cursor: url('/cursor.png'), pointer;
 }
 
 * {
@@ -104,7 +109,6 @@ a {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  cursor: url('/cursor.png'), pointer;
   color: #FFF;
   height: 100vh;
   white-space: nowrap;
@@ -138,6 +142,24 @@ h1 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.traverse {
+  position: fixed;
+  height: 15vh;
+  width: 50vw;
+  bottom: 0;
+  left: 0vw;
+  background: none;
+  border: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  z-index: 100;
+  cursor: inherit;
+
+  & + .traverse {
+    left: 50vw;
+  }
 }
 
 </style>

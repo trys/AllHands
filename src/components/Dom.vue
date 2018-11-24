@@ -12,12 +12,6 @@ export default {
   props: {
     active: Boolean
   },
-  
-  watch: {
-    active() {
-      this.go();
-    }
-  }
 }
 </script>
 

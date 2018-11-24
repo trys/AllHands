@@ -2,8 +2,10 @@
   <div class="thanks center">
     <h1><span>#yey</span> <span>#thanks</span></h1>
     <div class="stars">
-      <i v-for="({x, y, visible}, i) in numbers" :key="i" :class={visible} :style="{
-        transform: `translate3d(${x}vmin, ${y}vmin, 0)`
+      <i v-for="({x, y, delay}, i) in numbers" :key="i" :style="{
+        left: `${x}vw`,
+        top: `${y}vh`,
+        animationDelay: `${delay}ms`
       }">✨</i>
     </div>
   </div>
@@ -24,45 +26,16 @@ export default {
     })
   },
 
-  props: {
-    active: Boolean
-  },
-  
-  watch: {
-    active() {
-      if (this.active) {
-        this.cease = false;
-        window.requestAnimationFrame(this.showStar);
-      } else {
-        this.cease = true;
-      }
-    }
-  },
-
-  beforeDestroy() {
-    this.cease = true;
-  },
-
   methods: {
-    rand (min = 0, max = 50) {
+    rand (min = 0, max = 100) {
       return Math.floor(Math.random() * max) + min
     },
 
     addNumber () {
-      const x = Math.round(Math.random()) ? -Math.abs(this.rand()) : this.rand();
-      const y = Math.round(Math.random()) ? -Math.abs(this.rand()) : this.rand();
-      this.numbers.push({ x, y, visible: Math.round(Math.random()) })
-    },
-
-    showStar() {
-      if (!this.rand(0, 4)) {
-        this.numbers[Math.floor(Math.random() * this.numbers.length) + 0].visible = true;
-        this.numbers[Math.floor(Math.random() * this.numbers.length) + 0].visible = false;
-      }
-
-      if (!this.cease) {
-        window.requestAnimationFrame(this.showStar)
-      }
+      const x = this.rand();
+      const y = this.rand();
+      const delay = this.rand(100, 2000);
+      this.numbers.push({ x, y, delay })
     }
   }
 }
@@ -70,7 +43,9 @@ export default {
 
 <style scoped lang="scss">
 .thanks {
-  h1 {    
+  position: relative;
+  
+  h1 {
     span:first-child {
       position: relative;
       left: -3vmin;
@@ -101,20 +76,33 @@ export default {
   font-style: normal;
   opacity: 0;
   transition: 1s opacity;
-
-  &.visible {
-    opacity: 1;
-  }  
+  animation: 10s stars linear infinite;
 }
 
 @keyframes stars {
-  0%,
-  100% {
+  0% {
+    transform: translateY(0);
     opacity: 0;
   }
 
-  50% {
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    opacity: 0;
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
     opacity: 1;
+  }
+
+  100% {
+    transform: translateY(100px);
+    opacity: 0;
   }
 }
 </style>

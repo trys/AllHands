@@ -45,20 +45,20 @@ export default {
     go() {
       this.reset()
       this.time = 120;
-      setTimeout(() => {
-        this.timer = setInterval(this.update, 1000);
-      }, 1000);
+      this.timer = setTimeout(this.update, 2000);
     },
 
     update() {
       this.time--;
       if (this.time === 0) {
         this.reset();
+      } else {
+        this.timer = setTimeout(this.update, 1000);
       }
     },
 
     reset() {
-      clearInterval(this.timer)
+      clearTimeout(this.timer)
     }
   }
 }
