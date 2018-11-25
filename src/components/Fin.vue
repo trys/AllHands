@@ -1,7 +1,6 @@
 <template>
   <div class="center">
     <h1 class="crest-of-a">👋</h1>
-    <a href="https://github.com/trys/AllHands">github.com/trys/AllHands</a>
   </div>
 </template>
 
