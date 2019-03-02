@@ -18,7 +18,7 @@ export default {
     return {
       alphabet: 'ABCDEFGHIJLKMNOPQRSTUVWXYZ0123456789',
       letters: 'ABCDEFGHIJLKMNOPQRSTUVWXYZ0123456789',
-      words:   'DAISIEALL...HANDS.TUE.27NOV...2018..',
+      words:   'DAISIEALL...HANDS.FRI...08.MAR2019..',
       completed: -1,
       timers: null
     }
